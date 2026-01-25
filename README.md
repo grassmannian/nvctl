@@ -9,12 +9,21 @@ A client for managing user scripts. Expects a directory like
 └── src
     └── nvctl.janet
 ```
-and allows user to run commands with syntax `nv git adog` where `nv` is the build artifact of `src/` and `git/adog` is a bash script
+and allows user to run commands with syntax `build/nv git adog` where `git/adog` is a bash script located in the directory mentioned above
 
-# TODO List
+# Building
 
- - Autocompletion
- - Support non-bash scripts (Janet? arbitrary code?)
+Requires user has `janet` and `jpm` installed.
+
+Simply run `jpm build`
+
+# TODO
+
+Still missing a few things:
+
+ - main.janet needs to call nvctl.janet instead of just printing args
+ - Support arbitrarily nested directories, e.g. the command `build/nv git commit empty` should run the script in `git/commit/empty` or provide some failure message if no such script is found
+ - Support the --help flag at the base level, and for all subcommands. At the base level, this should print "usage: nvctl <subcommands>". For a given subcommand, this should print a brief help message. The contents of this message should be pulled from the first line beginning with `##` in the file corresponding to the subcommand. 
 
 # Acknowledgements
 
