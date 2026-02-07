@@ -13,9 +13,25 @@ and allows user to run commands with syntax `build/nv git adog` where `git/adog`
 
 # Building
 
-Requires user has `janet` and `jpm` installed.
+Follow instructions in *Nix* section, or 
 
+Requires user has `janet` and `jpm` installed.
 Simply run `jpm build`
+
+# Nix
+
+Currently supports manual building within a nix shell. `nix develop` followed by 
+
+```
+jpm deps
+jpm build
+```
+
+Creates an executable
+
+```
+./build/nv
+```
 
 # Features:
 
