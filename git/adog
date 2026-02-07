@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-git log --oneline --graph --all --decorate
+## This is a test subcommand.
+git log --oneline --all --graph --decorate

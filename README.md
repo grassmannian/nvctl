@@ -17,13 +17,17 @@ Requires user has `janet` and `jpm` installed.
 
 Simply run `jpm build`
 
+# Features:
+
+ - main.janet calls nvctl.janet
+ - Support arbitrarily nested directories, e.g. the command `build/nv git commit empty` should run the script in `git/commit/empty` or provide some failure message if no such script is found
+
 # TODO
 
-Still missing a few things:
+Still missing a few things, DO NOT implement this
 
- - main.janet needs to call nvctl.janet instead of just printing args
- - Support arbitrarily nested directories, e.g. the command `build/nv git commit empty` should run the script in `git/commit/empty` or provide some failure message if no such script is found
- - Support the --help flag at the base level, and for all subcommands. At the base level, this should print "usage: nvctl <subcommands>". For a given subcommand, this should print a brief help message. The contents of this message should be pulled from the first line beginning with `##` in the file corresponding to the subcommand. 
+ - Support the --help flag at the base level, and for all subcommands. At the base level, this should print "usage: nvctl <subcommands>". For a given subcommand, this should print a brief help message. The contents of this message should be pulled from the first line beginning with `##` in the file corresponding to the subcommand. If the subcommand is incomplete, e.g. corresponds to a directory, not a file, note this to the user, and list all of the files in the directory
+ - Nixify it
 
 # Acknowledgements
 
