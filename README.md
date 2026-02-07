@@ -21,6 +21,13 @@ Simply run `jpm build`
 
  - main.janet calls nvctl.janet
  - Support arbitrarily nested directories, e.g. the command `build/nv git commit empty` should run the script in `git/commit/empty` or provide some failure message if no such script is found
+ - Scripts read from any of the following directories (ordered decreasing precedence)
+
+  1. `NVCTL_DIR`
+  2. the single directory specified in ~/.config/nvctl/.nvctl -- This file cannot contain ~
+  3. ~/scripts
+
+If none of these are specified, behavior undefined
 
 # TODO
 

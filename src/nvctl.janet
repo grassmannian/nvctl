@@ -4,7 +4,9 @@
   (def home (os/getenv "HOME"))
   (or 
     (os/getenv "NVCTL_DIR")
-    (try (string/trim (slurp (path/join home ".config/nvctl/.nvctl"))) ([err] nil))
+    (try 
+      (string/trim (slurp (path/join home ".config/nvctl/.nvctl"))) 
+      ([err] nil))
     (path/join home "scripts")))
 
 (defn run 
