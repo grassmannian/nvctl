@@ -24,8 +24,6 @@ Simply run `jpm build`
 
 # TODO
 
-Still missing a few things, DO NOT implement this
-
  - Support the --help flag at the base level, and for all subcommands. At the base level, this should print "usage: nvctl <subcommands>". For a given subcommand, this should print a brief help message. The contents of this message should be pulled from the first line beginning with `##` in the file corresponding to the subcommand. If the subcommand is incomplete, e.g. corresponds to a directory, not a file, note this to the user, and list all of the files in the directory
  - Nixify it
 
