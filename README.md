@@ -24,7 +24,7 @@ Simply run `jpm build`
  - Scripts read from any of the following directories (ordered decreasing precedence)
 
   1. `NVCTL_DIR`
-  2. the single directory specified in ~/.config/nvctl/.nvctl -- This file cannot contain ~
+  2. the single directory specified in ~/.config/nvctl/.nvctl
   3. ~/scripts
 
 If none of these are specified, behavior undefined

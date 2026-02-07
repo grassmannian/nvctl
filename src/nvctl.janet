@@ -1,13 +1,16 @@
 (import spork/path)
 
-(defn resolve-base-dir []
+(defn resolve-home [path]
   (def home (os/getenv "HOME"))
+  (string/replace "~" home path))
+
+(defn resolve-base-dir []
   (or 
     (os/getenv "NVCTL_DIR")
     (try 
-      (string/trim (slurp (path/join home ".config/nvctl/.nvctl"))) 
+      (resolve-home (string/trim (slurp (resolve-home  "~/.config/nvctl/.nvctl"))))
       ([err] nil))
-    (path/join home "scripts")))
+    (resolve-home "~/scripts")))
 
 (defn run 
   "does something, an even better function"
