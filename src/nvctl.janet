@@ -5,10 +5,10 @@
   (string/replace "~" home path))
 
 (defn resolve-base-dir []
-  (or 
+  (or
     (os/getenv "NVCTL_DIR")
-    (try 
-      (resolve-home (string/trim (slurp (resolve-home  "~/.config/nvctl/.nvctl"))))
+    (try
+      (resolve-home (string/trim (slurp (resolve-home "~/.config/nvctl/.nvctl"))))
       ([err] nil))
     (resolve-home "~/scripts")))
 
@@ -17,7 +17,7 @@
     (if-let [line (find |(string/has-prefix? "##" $) (file/lines f))]
       (print line))))
 
-(defn run 
+(defn run
   "does something, an even better function"
   [args]
   (if (= "--help" (last args))

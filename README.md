@@ -49,7 +49,7 @@ If none of these are specified, behavior undefined
 
 # TODO
 
- - Nixify it
+ - Nixify it (see https://github.com/turnerdev/janet-nix) for SOTA
  - handle help more cleanly
 
 # Acknowledgements
