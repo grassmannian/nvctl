@@ -43,7 +43,6 @@ If none of these are specified, behavior undefined
 # TODO
 
  - handle help more cleanly
- - handle commands with arguments
 
 # Acknowledgements
 
