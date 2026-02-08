@@ -18,6 +18,26 @@
         "type": "github"
       }
     },
+    "janet-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1763689277,
+        "narHash": "sha256-3lea93gd7mWWV2k+F2tIfUt5hbcyL3s9o8fTsB2zT4A=",
+        "owner": "turnerdev",
+        "repo": "janet-nix",
+        "rev": "31063f3c2dbb20d618676127281ec1c9118092e4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "turnerdev",
+        "repo": "janet-nix",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1770197578,
@@ -37,6 +57,7 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
+        "janet-nix": "janet-nix",
         "nixpkgs": "nixpkgs"
       }
     },

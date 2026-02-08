@@ -20,7 +20,9 @@ Simply run `jpm build`
 
 # Nix
 
-Currently supports manual building within a nix shell. `nix develop` followed by 
+`nix build`
+
+or use dev shell, `nix develop` followed by 
 
 ```
 jpm deps
@@ -49,7 +51,6 @@ If none of these are specified, behavior undefined
 
 # TODO
 
- - Nixify it (see https://github.com/turnerdev/janet-nix) for SOTA
  - handle help more cleanly
 
 # Acknowledgements
