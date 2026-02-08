@@ -44,6 +44,7 @@ If none of these are specified, behavior undefined
 
  - handle help more cleanly
  - handle commands with arguments
+ - handle shebang correctly
 
 # Acknowledgements
 

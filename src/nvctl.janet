@@ -24,4 +24,4 @@
     (find-help-command (path/join (resolve-base-dir) ;(slice args 0 -2)))
     (let [script-path (path/join (resolve-base-dir) ;args)]
       (print script-path)
-      (os/execute ["bash" script-path] :p))))
+      (os/execute [script-path] :p))))
