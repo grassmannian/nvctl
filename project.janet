@@ -5,6 +5,6 @@
   :dependencies ["https://github.com/janet-lang/spork.git"])
 
 (declare-executable
- :name "nv"
+ :name "nvctl"
  :entry "src/main.janet"
  :install true)

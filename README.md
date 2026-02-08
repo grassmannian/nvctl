@@ -2,23 +2,17 @@
 
 A client for managing user scripts. Expects a directory like
 ```
-├── flake.nix
 ├── git
 │   └── adog
-├── README.md
-└── src
-    └── nvctl.janet
+│   └── amend
+└── cp
+    └── to-cluster
 ```
-and allows user to run commands with syntax `build/nv git adog` where `git/adog` is a bash script located in the directory mentioned above
+and allows user to run commands with syntax `nvctl git adog` where `git/adog` is a bash script located in the directory mentioned above
 
 # Building
 
-Follow instructions in *Nix* section, or 
-
-Requires user has `janet` and `jpm` installed.
-Simply run `jpm build`
-
-# Nix
+Building with Nix is supported, 
 
 `nix build`
 
@@ -29,16 +23,13 @@ jpm deps
 jpm build
 ```
 
-Creates an executable
+This places a build binary in `JANET_BUILDPATH` which is by default `.jpm/build/nvctl`. 
 
-```
-./build/nv
-```
+You could of course install `janet` and `jpm` independantly and build with command `jpm build`
 
 # Features:
 
- - main.janet calls nvctl.janet
- - Support arbitrarily nested directories, e.g. the command `build/nv git commit empty` should run the script in `git/commit/empty` or provide some failure message if no such script is found
+ - Support arbitrarily nested directories, e.g. the command `build/nvctl git commit empty` should run the script in `git/commit/empty` or provide some failure message if no such script is found
  - Scripts read from any of the following directories (ordered decreasing precedence)
 
   1. `NVCTL_DIR`
@@ -47,11 +38,12 @@ Creates an executable
 
 If none of these are specified, behavior undefined
 
- - pass a `--help` flag to your program (e.g `nv git adog --help`) to print a help dialog if one has been provided. Help dialog is the first line in the file which begins "##"
+ - pass a `--help` flag to your program (e.g `nvctl git adog --help`) to print a help dialog if one has been provided. Help dialog is the first line in the file which begins "##"
 
 # TODO
 
  - handle help more cleanly
+ - handle commands with arguments
 
 # Acknowledgements
 

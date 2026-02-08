@@ -18,7 +18,7 @@
             name = "nvctl";
             version = "1.0.0";
             src = ./.;
-            bin = "nv";
+            bin = "nvctl";
           };
 
           default = self.packages.${system}.nvctl;
