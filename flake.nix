@@ -20,9 +20,10 @@
             src = ./.;
             bin = "nv";
           };
+
+          default = self.packages.${system}.nvctl;
         };
 
-        defaultPackage = self.packages.${system}.nvctl;
 
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [janet jpm];
