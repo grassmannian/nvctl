@@ -17,15 +17,26 @@
     (if-let [line (find |(string/has-prefix? "##" $) (file/lines f))]
       (print line))))
 
+(defn resolve-child
+  "Resolve `arg` within `base`, match exact name first, then file `arg.*`
+  returns child path or nil"
+  [base arg]
+  (def exact (path/join base arg))
+  (if (os/stat exact :mode)
+    exact
+    (when (= :directory (os/stat base :mode))
+      (def prefix (string arg "."))
+      (when-let [name (find |(string/has-prefix? prefix $) (sort (os/dir base)))]
+        (path/join base name)))))
+
 (defn build-command [base args]
   (if-let [next-arg (first args)
-           test-path (path/join base next-arg)
-           exists (os/stat test-path :mode)]
-    (build-command test-path (drop 1 args))
+           child (resolve-child base next-arg)]
+    (build-command child (drop 1 args))
     [base ;args]))
 
 (defn run
   [args]
   (if (= "--help" (last args))
-    (find-help-command (path/join (resolve-base-dir) ;(slice args 0 -2)))
+    (find-help-command (first (build-command (resolve-base-dir) (slice args 0 -2))))
     (os/execute (build-command (resolve-base-dir) args) :p)))
