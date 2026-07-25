@@ -30,14 +30,20 @@
           buildInputs = [ pkgs.janet ];
           shellHook = ''
             # localize jpm dependency paths
-            export JANET_PATH=$PWD/.jpm
-            export JANET_TREE=$JANET_PATH/jpm_tree
-            export JANET_LIBPATH=${pkgs.janet}/lib/
+            export JANET_TREE="$PWD/.jpm/jpm_tree"
+            export JANET_BUILDPATH="$PWD/.jpm/build"
+            export JANET_LIBPATH="${pkgs.janet}/lib"
             export JANET_HEADERPATH="${pkgs.janet}/include/janet"
-            export JANET_BUILDPATH="$JANET_PATH/build"
+            # janet reoslves imports from :syspath which is JANET_PATH
+            # jpm installs to $JANET_TREE/lib
+
+            export JANET_PATH="$JANET_TREE/lib"
             export PATH="$PATH:$JANET_TREE/bin"
-            mkdir -p "$JANET_TREE"
-            mkdir -p "$JANET_BUILDPATH"
+            mkdir -p "$JANET_TREE" "$JANET_BUILDPATH"
+
+            if [ -f lockfile.jdn ] && ! cmp -s jockfile.jdn "$JANET_TREE/.lockfile.stamp"; then
+              jpm --tree="$JANET_TREE" load-lockfile
+            fi
           '';
         };
       });
